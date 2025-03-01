@@ -1,6 +1,9 @@
 package assignment
 
-import "sort"
+import (
+	"sort"
+	"unicode"
+)
 
 // Reverse reverses the order of a slice of strings.
 func Reverse(s []string) []string {
@@ -28,7 +31,7 @@ func Anagram(s1, s2 string) bool {
 		return false
 	}
 
-	// Runes are like chars in Go
+	// Runes are like chars in Go but unicode
 	r1 := []rune(s1)
 	r2 := []rune(s2)
 
@@ -42,4 +45,15 @@ func Anagram(s1, s2 string) bool {
 		}
 	}
 	return true
+}
+
+// RemoveDigits removes all digit characters from a string
+func RemoveDigits(s string) string {
+	var result []rune
+	for _, r := range s {
+		if !unicode.IsDigit(r) {
+			result = append(result, r)
+		}
+	}
+	return string(result)
 }

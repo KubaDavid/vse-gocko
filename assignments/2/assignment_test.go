@@ -102,7 +102,6 @@ func TestAnagram(t *testing.T) {
 	}
 }
 
-/*
 func TestRemoveDigits(t *testing.T) {
 	type args struct {
 		s string
@@ -129,6 +128,7 @@ func TestRemoveDigits(t *testing.T) {
 	}
 }
 
+/*
 func TestReplaceDigits(t *testing.T) {
 	type args struct {
 		s string
