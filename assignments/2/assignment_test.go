@@ -32,7 +32,7 @@ func TestReverse(t *testing.T) {
 	}
 }
 
-/* func TestPalindrome(t *testing.T) {
+func TestPalindrome(t *testing.T) {
 	type args struct {
 		s []string
 	}
@@ -58,6 +58,7 @@ func TestReverse(t *testing.T) {
 	}
 }
 
+/*
 func TestAnagram(t *testing.T) {
 	type args struct {
 		s1 string
