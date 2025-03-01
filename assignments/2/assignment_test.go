@@ -58,7 +58,6 @@ func TestPalindrome(t *testing.T) {
 	}
 }
 
-/*
 func TestAnagram(t *testing.T) {
 	type args struct {
 		s1 string
@@ -103,6 +102,7 @@ func TestAnagram(t *testing.T) {
 	}
 }
 
+/*
 func TestRemoveDigits(t *testing.T) {
 	type args struct {
 		s string
