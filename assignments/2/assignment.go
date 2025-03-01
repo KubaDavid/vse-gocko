@@ -57,3 +57,23 @@ func RemoveDigits(s string) string {
 	}
 	return string(result)
 }
+
+// ReplaceDigits replaces all digit characters in a string with the given replacement character.
+func ReplaceDigits(s string, r string) string {
+	if len(r) != 1 {
+		return s
+	}
+
+	replacementRune := []rune(r)[0] // Convert the replacement string to a rune
+	var result []rune
+
+	for _, ch := range s {
+		if unicode.IsDigit(ch) {
+			result = append(result, replacementRune) // Replace digit
+		} else {
+			result = append(result, ch) // Keep non-digit
+		}
+	}
+
+	return string(result)
+}

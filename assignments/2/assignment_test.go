@@ -3,6 +3,8 @@ package assignment
 import (
 	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/mock"
 	// "github.com/stretchr/testify/mock"
 )
 
@@ -128,7 +130,6 @@ func TestRemoveDigits(t *testing.T) {
 	}
 }
 
-/*
 func TestReplaceDigits(t *testing.T) {
 	type args struct {
 		s string
@@ -227,4 +228,4 @@ func TestEnrollStudentToCourse(t *testing.T) {
 		})
 		tt.args.dataSource.(*mockDataSource).AssertExpectations(t)
 	}
-} */
+}
