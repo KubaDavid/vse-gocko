@@ -1,6 +1,7 @@
 package assignment
 
 import (
+	"errors"
 	"sort"
 	"unicode"
 )
@@ -76,4 +77,38 @@ func ReplaceDigits(s string, r string) string {
 	}
 
 	return string(result)
+}
+
+type Student interface {
+	Name() string
+}
+
+type Course interface {
+	Name() string
+	EnrollStudent(s Student) error
+}
+
+type DataSource interface {
+	ReadStudent(studentID int) (Student, error)
+	ReadCourse(courseID int) (Course, error)
+}
+
+// EnrollStudentToCourse enrolls a student into a course
+func EnrollStudentToCourse(ds DataSource, studentID, courseID int) error {
+	student, err := ds.ReadStudent(studentID)
+	if err != nil {
+		return errors.New("failed to retrieve student: " + err.Error())
+	}
+
+	course, err := ds.ReadCourse(courseID)
+	if err != nil {
+		return errors.New("failed to retrieve course: " + err.Error())
+	}
+
+	// Enroll the student in the course
+	if err := course.EnrollStudent(student); err != nil {
+		return errors.New("failed to enroll student: " + err.Error())
+	}
+
+	return nil
 }
