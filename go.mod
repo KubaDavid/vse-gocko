@@ -1,4 +1,4 @@
-module vse-gocko
+module vse-gocko/excercises
 
 go 1.24.0
 
