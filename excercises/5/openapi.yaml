@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: Gocko homework - User API
   version: 0.0.1
-  description: A basic API to manage users – you can add, view, update, delete users, and also filter them by country.
+  description: A basic API to manage users as part of the Gocko homework.
 
 servers:
   - url: http://localhost
