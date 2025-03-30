@@ -1,0 +1,136 @@
+openapi: 3.0.4
+info:
+  title: Gocko homework - User API
+  version: 0.0.1
+  description: A basic API to manage users – you can add, view, update, delete users, and also filter them by country.
+
+servers:
+  - url: http://localhost
+
+paths:
+  /users:
+    get:
+      summary: Get all users
+      description: Shows a list of all users. You can also filter by country if you want.
+      parameters:
+        - in: query
+          name: country
+          schema:
+            type: string
+          description: Only show users from this country
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+    post:
+      summary: Add a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewUser'
+      responses:
+        '201':
+          description: User was added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /users/{id}:
+    get:
+      summary: Get a user by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Found the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+
+    put:
+      summary: Update a user by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewUser'
+      responses:
+        '200':
+          description: User updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+
+    delete:
+      summary: Delete a user by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: User deleted
+        '404':
+          description: User not found
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "abc123"
+        name:
+          type: string
+          example: "Alice"
+        email:
+          type: string
+          format: email
+          example: "alice@example.com"
+        country:
+          type: string
+          example: "Germany"
+
+    NewUser:
+      type: object
+      required:
+        - name
+        - email
+        - country
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        country:
+          type: string
