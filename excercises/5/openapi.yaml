@@ -108,17 +108,17 @@ components:
       properties:
         id:
           type: string
-          example: "abc123"
+          example: 'abc123'
         name:
           type: string
-          example: "Alice"
+          example: 'Alice'
         email:
           type: string
           format: email
-          example: "alice@example.com"
+          example: 'alice@example.com'
         country:
           type: string
-          example: "Germany"
+          example: 'Germany'
 
     NewUser:
       type: object
